@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,10 @@ namespace esercizio_pianeti
         public readonly double _y;
         public double X { get { return _x; } }
         public double Y { get { return _y; } }
+        public Vettore()
+        {
+
+        }
         public Vettore(double x, double y)
         {
             _x = x;
@@ -54,15 +59,15 @@ namespace esercizio_pianeti
         {
             return new Vettore(v1.X * v2.X, v1.Y * v2.Y);
         }
-        public static Vettore operator *(Vettore v1, int a)
+        public static Vettore operator *(Vettore v1, double a)
         {
             return new Vettore(v1.X * a, v1.Y * a);
         }
-        public static Vettore operator *(int a, Vettore v1)
+        public static Vettore operator *(double a, Vettore v1)
         {
             return new Vettore(a * v1.X, a * v1.Y);
         }
-        public static Vettore operator /(Vettore v1, int a)
+        public static Vettore operator /(Vettore v1, double a)
         {
             return new Vettore(v1.X * (1 / a), v1.Y * (1 / a));
         }
@@ -95,6 +100,23 @@ namespace esercizio_pianeti
         public static bool operator !=(Vettore v1, Vettore v2)
         {
             return !(v1 == v2);
+        }
+        public double Modulo()
+        {
+            return Math.Sqrt(Math.Pow(2, this.X) + Math.Pow(2, this.Y)); 
+        }
+
+        public  Vettore versore()
+        {
+            return this / this.Modulo();
+        }
+
+        public Vettore distanza(Vettore v2)
+        {
+            if (v2.Modulo() > this.Modulo())
+                return v2 - this;
+            else
+                return this -v2;
         }
 
     }

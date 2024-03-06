@@ -8,6 +8,8 @@ namespace esercizio_pianeti
 {
     internal class Planetario
     {
-        public List <Pianeta> Pianeti { get; set; }
+        public List<Pianeta> Pianeti { get; set; }
+        
+       
     }
 }
