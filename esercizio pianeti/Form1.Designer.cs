@@ -90,6 +90,7 @@
             this.spostamento.Name = "spostamento";
             this.spostamento.Size = new System.Drawing.Size(100, 20);
             this.spostamento.TabIndex = 5;
+            this.spostamento.TextChanged += new System.EventHandler(this.spostamento_TextChanged);
             // 
             // velocità
             // 
@@ -100,7 +101,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 10;
+            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.button3_Click);
             // 
             // Form1

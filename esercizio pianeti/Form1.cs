@@ -31,31 +31,36 @@ namespace esercizio_pianeti
         {
             listBox1.Items.Remove(listBox1.SelectedItem);
         }
-
+        
         private void button3_Click(object sender, EventArgs e)
-        {   Vettore s1 = new Vettore(3000,400);
-            Vettore v1 = new Vettore(0, 0);
-            Pianeta p1 = new Pianeta(1000,s1,v1);
-            Vettore s2 = new Vettore(5000, 400);
-            Vettore v2 = new Vettore(0, 100);
-            Pianeta p2 = new Pianeta(1, s1, v1);
+        {  
 
             Graphics g = this.CreateGraphics();
-            g.FillEllipse(Brushes.Black, 100, 100, (float)s1.X, (float)s1.Y);
-            g.FillEllipse(Brushes.Black, 10, 10, (float)s2.X, (float)s2.Y);
 
+
+            Vettore s1 = Vettore.Parse("300;40");
+            Vettore s2 = new Vettore(500, 40);
             // s = s0 + v0 * t + 1 / 2 * (F / m) * t * t
             //t = 0,01 s
 
-            Vettore d= new Vettore();
+            Vettore d = new Vettore();
             d = s1.distanza(s2);
-            Double f = (6.67 * Math.Pow(-11,10))*((p1.Massa*p2.Massa)/(d*d).Modulo());            
+            Double f = (6.67 * Math.Pow(10,-11))*((1*1000)/(d*d).Modulo());            
 
             Vettore F = new Vettore();
             F = f * d.versore();
+            Vettore v = new Vettore(0, 1000);
+            Vettore s = s1 + v * 0.001 + 1 / 2 * (F/ 1) * (0.01 * 0.001);
+            s1 = s;
+            g.FillEllipse(Brushes.Black,500,40,110,110);
+            g.FillEllipse(Brushes.Black, (float)s.X, (float)s.Y, 10, 10);
 
-            Double s = s1.Modulo()+ v1.Modulo() * 0.01 + 1 / 2 * (F.Modulo()/ p1.Massa) * 0.01 * 0.01;
-            Vettore ss= new Vettore();
+
+
+        }
+
+        private void spostamento_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
