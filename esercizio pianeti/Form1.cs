@@ -33,34 +33,60 @@ namespace esercizio_pianeti
         }
         
         private void button3_Click(object sender, EventArgs e)
-        {  
-
-            Graphics g = this.CreateGraphics();
+        {
 
 
-            Vettore s1 = Vettore.Parse("300;40");
-            Vettore s2 = new Vettore(500, 40);
-            // s = s0 + v0 * t + 1 / 2 * (F / m) * t * t
-            //t = 0,01 s
+            timer2.Enabled = true;
 
-            Vettore d = new Vettore();
-            d = s1.distanza(s2);
-            Double f = (6.67 * Math.Pow(10,-11))*((1*1000)/(d*d).Modulo());            
+           
 
-            Vettore F = new Vettore();
-            F = f * d.versore();
-            Vettore v = new Vettore(0, 1000);
-            Vettore s = s1 + v * 0.001 + 1 / 2 * (F/ 1) * (0.01 * 0.001);
-            s1 = s;
-            g.FillEllipse(Brushes.Black,500,40,110,110);
-            g.FillEllipse(Brushes.Black, (float)s.X, (float)s.Y, 10, 10);
-
-
+            
 
         }
 
         private void spostamento_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Planetario P = new Planetario();
+        }
+        int i = 0;
+        
+        Vettore s1 = Vettore.Parse("300;40");
+
+        Vettore s2 = new Vettore(500, 40);
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            
+
+
+                
+            
+            Graphics g = this.CreateGraphics();
+
+            
+             
+            
+
+            // s = s0 + v0 * t + 1 / 2 * (F / m) * t * t
+            //t = 0,01 s
+
+            Vettore d = new Vettore();
+            d = s1.distanza(s2);
+            Double f = (6.67 * Math.Pow(10, -5)) * ((1 * 1000) / (d * d).Modulo());
+
+            Vettore F = new Vettore();
+            F = f * d.versore();
+            Vettore v = new Vettore(0, 1000);
+            Vettore s = s1 + (v * 0.1) + (1 / 2 * (F / 1) * (0.1 * 0.1));
+            s1 = s;
+            g.FillEllipse(Brushes.Black, 500, 40, 110, 110);
+            g.FillEllipse(Brushes.Black, (float)s.X, (float)s.Y, 10, 10);
+
+            
 
         }
     }
