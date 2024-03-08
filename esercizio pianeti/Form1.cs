@@ -60,28 +60,18 @@ namespace esercizio_pianeti
         Vettore s2 = new Vettore(500, 40);
         private void timer2_Tick(object sender, EventArgs e)
         {
-            
-
-
-                
-            
             Graphics g = this.CreateGraphics();
-
-            
-             
-            
-
             // s = s0 + v0 * t + 1 / 2 * (F / m) * t * t
             //t = 0,01 s
 
             Vettore d = new Vettore();
             d = s1.distanza(s2);
-            Double f = (6.67 * Math.Pow(10, -5)) * ((1 * 1000) / (d * d).Modulo());
+            Double f = (6.67 * Math.Pow(10, 2)) * ((1 * 1000) / (d * d).Modulo());
 
             Vettore F = new Vettore();
             F = f * d.versore();
             Vettore v = new Vettore(0, 1000);
-            Vettore s = s1 + (v * 0.1) + (1 / 2 * (F / 1) * (0.1 * 0.1));
+            Vettore s = s1 + (v * 0.01) + (1 / 2 * (F / 1) * (0.01 * 0.01));
             s1 = s;
             g.FillEllipse(Brushes.Black, 500, 40, 110, 110);
             g.FillEllipse(Brushes.Black, (float)s.X, (float)s.Y, 10, 10);
