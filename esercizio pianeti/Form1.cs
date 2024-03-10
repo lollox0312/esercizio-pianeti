@@ -66,7 +66,7 @@ namespace esercizio_pianeti
 
             Vettore d = new Vettore();
             d = s1.distanza(s2);
-            Double f = (6.67 * Math.Pow(10, 2)) * ((1 * 1000) / (d * d).Modulo());
+            Double f = (6.67 * Math.Pow(10, -6)) * ((1 * 1000000) / (d * d).Modulo());
 
             Vettore F = new Vettore();
             F = f * d.versore();
