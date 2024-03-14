@@ -16,7 +16,7 @@ namespace esercizio_pianeti
         {
             InitializeComponent();
         }
-
+        Planetario P = new Planetario();
         private void button1_Click(object sender, EventArgs e)
         {
             double m = double.Parse(massa.Text);
@@ -30,11 +30,15 @@ namespace esercizio_pianeti
         private void button2_Click(object sender, EventArgs e)
         {
             listBox1.Items.Remove(listBox1.SelectedItem);
+
         }
         
         private void button3_Click(object sender, EventArgs e)
         {
-
+            foreach(Pianeta p in listBox1.Items)
+            {
+                P.Pianeti.Add(p);
+            }
 
             timer2.Enabled = true;
 
@@ -49,11 +53,11 @@ namespace esercizio_pianeti
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
-            Planetario P = new Planetario();
+     
         }
-        int i = 0;
+        
         
         Vettore s1 = Vettore.Parse("300;40");
 
@@ -69,7 +73,7 @@ namespace esercizio_pianeti
             Double f = (6.67 * Math.Pow(10, -6)) * ((1 * 1000000) / (d * d).Modulo());
 
             Vettore F = new Vettore();
-            F = f * d.versore();
+            F = f * (d.versore());
             Vettore v = new Vettore(0, 1000);
             Vettore s = s1 + (v * 0.01) + (1 / 2 * (F / 1) * (0.01 * 0.01));
             s1 = s;

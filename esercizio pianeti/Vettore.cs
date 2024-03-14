@@ -55,9 +55,9 @@ namespace esercizio_pianeti
         {
             return new Vettore(v1.X - v2.X, v1.Y - v2.Y);
         }
-        public static Vettore operator *(Vettore v1, Vettore v2)
+        public static double operator *(Vettore v1, Vettore v2)
         {
-            return new Vettore(v1.X * v2.X, v1.Y * v2.Y);
+            return v1.X * v2.X + v1.Y * v2.Y;
         }
         public static Vettore operator *(Vettore v1, double a)
         {

@@ -8,14 +8,16 @@ namespace esercizio_pianeti
 {
     internal class Planetario
     {
+        internal const double G = 6.67e-6;
+
         public List<Pianeta> Pianeti { get; set; }
-        public Vettore forza(Pianeta p)
+        
+        public Vettore Forza(Pianeta p)
         {
-            foreach (Pianeta p1 in Pianeti) {
-                Vettore d = p.S.distanza(p1.S);
-            double f = (6.67 * Math.Pow(10, -6)) * ((p.Massa*p1.Massa) / (d * d).Modulo());
-                Vettore F = new Vettore();
-                return F * (d.versore());
+
+            foreach (Pianeta altroPianeta in Pianeti) {
+                Vettore d = p.S.distanza(altroPianeta.S);
+                double f = G * ((p.Massa*altroPianeta.Massa) / (d * d));
             }
             return new Vettore(0, 1);
         }
