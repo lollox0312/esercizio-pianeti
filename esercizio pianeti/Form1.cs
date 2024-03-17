@@ -11,18 +11,39 @@ using System.Windows.Forms;
 namespace esercizio_pianeti
 {
     public partial class Form1 : Form
-    {
+    {  public void Form1_Load(object sender, EventArgs e)
+        {
+     
+        }
+        Planetario P;
         public Form1()
         {
             InitializeComponent();
+             P = new Planetario();
         }
-        Planetario P = new Planetario();
+        
+       
+
         private void button1_Click(object sender, EventArgs e)
         {
-            double m = double.Parse(massa.Text);
-            Vettore ve = Vettore.Parse(velocità.Text);
-            Vettore sp = Vettore.Parse(spostamento.Text);
-            Pianeta p = new Pianeta(m, ve, sp);
+            double m; 
+            if(!double.TryParse(massa.Text,out  m))
+            {
+             MessageBox.Show("ERRORE","ERRORE");
+                return;
+            }
+            if(!Vettore.TryParse(velocità.Text,out Vettore ve))
+            {
+                MessageBox.Show("ERRORE", "ERRORE");
+                return;
+            }
+            if (!Vettore.TryParse(Posizione.Text, out Vettore posizione))
+            {
+                MessageBox.Show("ERRORE", "ERRORE");
+                return;
+            }
+        
+            Pianeta p = new Pianeta(m, ve, posizione);
             listBox1.Items.Add(p);
 
         }
@@ -32,7 +53,12 @@ namespace esercizio_pianeti
             listBox1.Items.Remove(listBox1.SelectedItem);
 
         }
-        
+
+        //private Planetario GetP()
+        //{
+        //    return P;
+        //}
+
         private void button3_Click(object sender, EventArgs e)
         {
             foreach(Pianeta p in listBox1.Items)
@@ -41,9 +67,7 @@ namespace esercizio_pianeti
             }
 
             timer2.Enabled = true;
-
-           
-
+            
             
 
         }
@@ -53,35 +77,24 @@ namespace esercizio_pianeti
 
         }
 
-        public void Form1_Load(object sender, EventArgs e)
-        {
-     
-        }
+      
         
         
-        Vettore s1 = Vettore.Parse("300;40");
-
-        Vettore s2 = new Vettore(500, 40);
+        
         private void timer2_Tick(object sender, EventArgs e)
         {
-            Graphics g = this.CreateGraphics();
-            // s = s0 + v0 * t + 1 / 2 * (F / m) * t * t
-            //t = 0,01 s
+            DisegnoPianeti();
+            P.Move();
 
-            Vettore d = new Vettore();
-            d = s1.distanza(s2);
-            Double f = (6.67 * Math.Pow(10, -6)) * ((1 * 1000000) / (d * d).Modulo());
-
-            Vettore F = new Vettore();
-            F = f * (d.versore());
-            Vettore v = new Vettore(0, 1000);
-            Vettore s = s1 + (v * 0.01) + (1 / 2 * (F / 1) * (0.01 * 0.01));
-            s1 = s;
-            g.FillEllipse(Brushes.Black, 500, 40, 110, 110);
-            g.FillEllipse(Brushes.Black, (float)s.X, (float)s.Y, 10, 10);
-
-            
-
+        }
+        private void DisegnoPianeti()
+        {
+            ;
+            Graphics g=this.CreateGraphics();
+            foreach(Pianeta p in P.Pianeti)
+            {
+                g.FillEllipse(Brushes.Black,(float) p.Posizione.X, (float)p.Posizione.Y, 10, 10);
+            }
         }
     }
 }

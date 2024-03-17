@@ -111,13 +111,5 @@ namespace esercizio_pianeti
             return this / this.Modulo();
         }
 
-        public Vettore distanza(Vettore v2)
-        {
-            if (v2.Modulo() > this.Modulo())
-                return v2 - this;
-            else
-                return this -v2;
-        }
-
     }
 }

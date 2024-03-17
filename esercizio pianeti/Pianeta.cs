@@ -9,13 +9,13 @@ namespace esercizio_pianeti
     internal class Pianeta
     {
         public double Massa { get; set; }
-        public Vettore S { get; set;}
+        public Vettore Posizione { get; set;}
         public Vettore V { get; set; }
 
         public Pianeta(double m, Vettore ve,Vettore sp)
         {
             Massa = m;
-            S = sp;
+            Posizione = sp;
             V = ve;
         }
     }
