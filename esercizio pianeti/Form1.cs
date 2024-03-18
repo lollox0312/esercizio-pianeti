@@ -16,12 +16,12 @@ namespace esercizio_pianeti
      
         }
         Planetario P;
-        List<Pianeta> pianeti;
+        
         public Form1()
         {
             InitializeComponent();
             P = new Planetario();
-            pianeti = new List<Pianeta>();
+            P.Pianeti = new List<Pianeta>();
         }
       
 
@@ -98,7 +98,7 @@ namespace esercizio_pianeti
             Graphics g=this.CreateGraphics();
             foreach(Pianeta p in P.Pianeti)
             {
-                g.FillEllipse(Brushes.Black,(float) p.Posizione.X, (float)p.Posizione.Y, 10, 10);
+                g.FillEllipse(Brushes.Black, (float)p.Posizione.X, (float)p.Posizione.Y, 10, 10);
             }
         }
     }
