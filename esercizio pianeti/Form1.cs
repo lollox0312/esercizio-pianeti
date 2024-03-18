@@ -87,9 +87,10 @@ namespace esercizio_pianeti
         
         private void timer2_Tick(object sender, EventArgs e)
         {
+            Refresh();
             DisegnoPianeti();
             P.Move();
-            Refresh();
+            
 
         }
         private void DisegnoPianeti()
