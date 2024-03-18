@@ -24,7 +24,7 @@ namespace esercizio_pianeti
         }
         public override string ToString()
         {
-            return string.Format("{0};{1}", X, Y);
+            return string.Format("{0};{1}",X,Y);
         }
         public static Vettore Parse(string s)
         {

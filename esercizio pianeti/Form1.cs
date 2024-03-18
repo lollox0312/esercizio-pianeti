@@ -16,13 +16,14 @@ namespace esercizio_pianeti
      
         }
         Planetario P;
+        List<Pianeta> pianeti;
         public Form1()
         {
             InitializeComponent();
-             P = new Planetario();
+            P = new Planetario();
+            pianeti = new List<Pianeta>();
         }
-        
-       
+      
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -45,6 +46,9 @@ namespace esercizio_pianeti
         
             Pianeta p = new Pianeta(m, ve, posizione);
             listBox1.Items.Add(p);
+            massa.Clear();
+            velocità.Clear();
+            Posizione.Clear();
 
         }
 
@@ -85,6 +89,7 @@ namespace esercizio_pianeti
         {
             DisegnoPianeti();
             P.Move();
+            Refresh();
 
         }
         private void DisegnoPianeti()
