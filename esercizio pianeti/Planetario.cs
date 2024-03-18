@@ -35,8 +35,8 @@ namespace esercizio_pianeti
         {
             foreach(Pianeta p in Pianeti)
             {
-                p.Posizione = p.Posizione + (p.V * DeltaT) + ((Forza(p) * p.Massa) * Math.Pow(DeltaT, 2));
-                p.V = (Forza(p) * p.Massa) * DeltaT;
+                p.Posizione = p.Posizione + (p.V * DeltaT) + 0.5*((Forza(p) * p.Massa) * Math.Pow(DeltaT, 2));
+                p.V = (Forza(p) / p.Massa) * DeltaT;
             }
             
         }
