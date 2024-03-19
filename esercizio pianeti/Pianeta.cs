@@ -11,12 +11,14 @@ namespace esercizio_pianeti
         public double Massa { get; set; }
         public Vettore Posizione { get; set;}
         public Vettore V { get; set; }
-
-        public Pianeta(double m, Vettore ve,Vettore sp)
+        
+        public double R { get; set; }
+        public Pianeta(double m, Vettore ve,Vettore sp, double r)
         {
             Massa = m;
             Posizione = sp;
             V = ve;
+            R = r;
         }
     }
 }

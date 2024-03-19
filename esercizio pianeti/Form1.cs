@@ -43,12 +43,18 @@ namespace esercizio_pianeti
                 MessageBox.Show("ERRORE", "ERRORE");
                 return;
             }
-        
-            Pianeta p = new Pianeta(m, ve, posizione);
+            if (!double.TryParse(Raggio.Text, out double r))
+            {
+                MessageBox.Show("ERRORE", "ERRORE");
+                return;
+            }
+
+            Pianeta p = new Pianeta(m, ve, posizione, r);
             listBox1.Items.Add(p);
             massa.Clear();
             velocità.Clear();
             Posizione.Clear();
+            Raggio.Clear();
 
         }
 
@@ -95,12 +101,17 @@ namespace esercizio_pianeti
         }
         private void DisegnoPianeti()
         {
-            ;
+            
             Graphics g=this.CreateGraphics();
             foreach(Pianeta p in P.Pianeti)
             {
-                g.FillEllipse(Brushes.Black, (float)p.Posizione.X, (float)p.Posizione.Y, 10, 10);
+                g.FillEllipse(Brushes.Black, (float)p.Posizione.X, (float)p.Posizione.Y, (float)p.R, (float)p.R);
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
