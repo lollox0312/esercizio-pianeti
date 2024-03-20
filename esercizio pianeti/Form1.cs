@@ -13,7 +13,7 @@ namespace esercizio_pianeti
     public partial class Form1 : Form
     {  public void Form1_Load(object sender, EventArgs e)
         {
-     
+            this.BackColor = Color.FromArgb(0, 0, 64);
         }
         Planetario P;
         
@@ -22,13 +22,14 @@ namespace esercizio_pianeti
             InitializeComponent();
             P = new Planetario();
             P.Pianeti = new List<Pianeta>();
+            
         }
       
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double m; 
-            if(!double.TryParse(massa.Text,out  m))
+            
+            if(!double.TryParse(massa.Text,out double  m))
             {
              MessageBox.Show("ERRORE","ERRORE");
                 return;
@@ -48,9 +49,12 @@ namespace esercizio_pianeti
                 MessageBox.Show("ERRORE", "ERRORE");
                 return;
             }
-
+            Random random = new Random();
+            Color randomColor = Color.FromArgb(random.Next(256), random.Next(256), random.Next(0));
             Pianeta p = new Pianeta(m, ve, posizione, r);
+            p.rr = randomColor;
             listBox1.Items.Add(p);
+            P.Pianeti.Add(p);
             massa.Clear();
             velocità.Clear();
             Posizione.Clear();
@@ -61,6 +65,7 @@ namespace esercizio_pianeti
         private void button2_Click(object sender, EventArgs e)
         {
             listBox1.Items.Remove(listBox1.SelectedItem);
+            P.Pianeti.RemoveAt(listBox1.SelectedIndex);
 
         }
 
@@ -71,12 +76,21 @@ namespace esercizio_pianeti
 
         private void button3_Click(object sender, EventArgs e)
         {
-            foreach(Pianeta p in listBox1.Items)
+            
+            label1.ForeColor = Color.White; label3.ForeColor = Color.White;
+           label4.ForeColor = Color.White; label5.ForeColor = Color.White;
+
+
+            Random r = new Random();
+            Graphics g = this.CreateGraphics();
+            for (int i = 0; i < 20; i++)
             {
-                P.Pianeti.Add(p);
+                g.FillEllipse(Brushes.White, r.Next(this.ClientSize.Width), r.Next(this.ClientSize.Height), 5, 5);
             }
+            
 
             timer2.Enabled = true;
+
             
             
 
@@ -93,25 +107,40 @@ namespace esercizio_pianeti
         
         private void timer2_Tick(object sender, EventArgs e)
         {
-            Refresh();
+           // Refresh();
             DisegnoPianeti();
             P.Move();
             
 
         }
+        
+       
         private void DisegnoPianeti()
         {
+            
             
             Graphics g=this.CreateGraphics();
             foreach(Pianeta p in P.Pianeti)
             {
-                g.FillEllipse(Brushes.Black, (float)p.Posizione.X, (float)p.Posizione.Y, (float)p.R, (float)p.R);
+                
+                Brush b = new SolidBrush(p.rr);
+                g.FillEllipse(b, (float)p.Posizione.X, (float)p.Posizione.Y, (float)p.R, (float)p.R);
             }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
         }
     }
 }

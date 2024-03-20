@@ -10,7 +10,7 @@ namespace esercizio_pianeti
     internal class Planetario
     {
         internal const double G = 6.67e-11;
-        internal const double DeltaT = 1;
+        internal const double DeltaT = 0.001;
 
         public List<Pianeta> Pianeti { get; set; }
         
@@ -35,7 +35,7 @@ namespace esercizio_pianeti
         {
             foreach(Pianeta p in Pianeti)
             {
-                p.Posizione = p.Posizione + (p.V * DeltaT) + (0.5*((Forza(p) * p.Massa) * (DeltaT*DeltaT)));
+                p.Posizione = ( p.Posizione + (p.V * DeltaT) + (0.5*((Forza(p) / p.Massa) * (DeltaT*DeltaT))));
                 p.V =p.V + (Forza(p) / p.Massa) * DeltaT;
             }
             
