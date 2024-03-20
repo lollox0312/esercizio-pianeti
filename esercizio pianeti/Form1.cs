@@ -14,6 +14,8 @@ namespace esercizio_pianeti
     {  public void Form1_Load(object sender, EventArgs e)
         {
             this.BackColor = Color.FromArgb(0, 0, 64);
+            label1.ForeColor = Color.White; label3.ForeColor = Color.White;
+            label4.ForeColor = Color.White; label5.ForeColor = Color.White;
         }
         Planetario P;
         
@@ -77,8 +79,7 @@ namespace esercizio_pianeti
         private void button3_Click(object sender, EventArgs e)
         {
             
-            label1.ForeColor = Color.White; label3.ForeColor = Color.White;
-           label4.ForeColor = Color.White; label5.ForeColor = Color.White;
+            
 
 
             Random r = new Random();
