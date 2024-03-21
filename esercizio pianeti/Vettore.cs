@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace esercizio_pianeti
 {
-    internal class Vettore
+    public class Vettore
     {
         public readonly double _x;
         public readonly double _y;

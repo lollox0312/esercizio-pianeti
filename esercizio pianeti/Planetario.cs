@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace esercizio_pianeti
 {
-    internal class Planetario
+    public class Planetario
     {
         internal const double G = 6.67e-11;
         internal const double DeltaT = 0.00001;
-
-        public List<Pianeta> Pianeti { get; set; }
+        public Planetario() { }
+         public List<Pianeta> Pianeti { get; set; }
         
         public Vettore Forza(Pianeta p)
         {

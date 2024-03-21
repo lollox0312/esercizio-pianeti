@@ -7,22 +7,27 @@ using System.Threading.Tasks;
 
 namespace esercizio_pianeti
 {
-    internal class Pianeta
+    public class Pianeta
     {
         public double Massa { get; set; }
         public Vettore Posizione { get; set;}
         public Vettore V { get; set; }
-        
+
         public double R { get; set; }
-        public Color rr { get; set; }    
-        public Pianeta(double m, Vettore ve,Vettore sp, double r)
+        public Color rr { get; set; }
+        public string Nome { get; set; }
+        public Pianeta(double m, Vettore ve,Vettore sp )
         {
             Massa = m;
             Posizione = sp;
             V = ve;
-            R = r;
+            
         }
-        
-         
+        public override string ToString()
+        {
+            return Nome;
+        }
+
+
     }
 }

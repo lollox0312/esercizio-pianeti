@@ -42,7 +42,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Raggio = new System.Windows.Forms.TextBox();
+            this.Nome = new System.Windows.Forms.TextBox();
+            this.btnSalva = new System.Windows.Forms.Button();
+            this.btnRecupera = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -154,17 +156,37 @@
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label5.Location = new System.Drawing.Point(111, 184);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Raggio";
+            this.label5.Text = "Nome";
             // 
-            // Raggio
+            // Nome
             // 
-            this.Raggio.Location = new System.Drawing.Point(12, 178);
-            this.Raggio.Name = "Raggio";
-            this.Raggio.Size = new System.Drawing.Size(92, 20);
-            this.Raggio.TabIndex = 11;
-            this.Raggio.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Nome.Location = new System.Drawing.Point(12, 178);
+            this.Nome.Name = "Nome";
+            this.Nome.Size = new System.Drawing.Size(92, 20);
+            this.Nome.TabIndex = 11;
+            this.Nome.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnSalva
+            // 
+            this.btnSalva.Location = new System.Drawing.Point(13, 205);
+            this.btnSalva.Name = "btnSalva";
+            this.btnSalva.Size = new System.Drawing.Size(79, 23);
+            this.btnSalva.TabIndex = 13;
+            this.btnSalva.Text = "Salva";
+            this.btnSalva.UseVisualStyleBackColor = true;
+            this.btnSalva.Click += new System.EventHandler(this.btnSalva_Click);
+            // 
+            // btnRecupera
+            // 
+            this.btnRecupera.Location = new System.Drawing.Point(98, 204);
+            this.btnRecupera.Name = "btnRecupera";
+            this.btnRecupera.Size = new System.Drawing.Size(75, 23);
+            this.btnRecupera.TabIndex = 14;
+            this.btnRecupera.Text = "Recupera";
+            this.btnRecupera.UseVisualStyleBackColor = true;
+            this.btnRecupera.Click += new System.EventHandler(this.btnRecupera_Click);
             // 
             // Form1
             // 
@@ -172,8 +194,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRecupera);
+            this.Controls.Add(this.btnSalva);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.Raggio);
+            this.Controls.Add(this.Nome);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -209,7 +233,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox Raggio;
+        private System.Windows.Forms.TextBox Nome;
+        private System.Windows.Forms.Button btnSalva;
+        private System.Windows.Forms.Button btnRecupera;
     }
 }
 
