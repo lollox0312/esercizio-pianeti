@@ -57,19 +57,23 @@ namespace esercizio_pianeti
             Color randomColor = Color.FromArgb(random.Next(256), random.Next(256), random.Next(0));
             Pianeta p = new Pianeta(m, ve, posizione);
             p.rr = randomColor;
+            p.Nome = Nome.Text;
+
             listBox1.Items.Add(p.ToString());
             P.Pianeti.Add(p);
             massa.Clear();
             velocità.Clear();
             Posizione.Clear();
             Nome.Clear();
+            
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            int i = listBox1.SelectedIndex;
             listBox1.Items.Remove(listBox1.SelectedItem);
-            P.Pianeti.RemoveAt(listBox1.SelectedIndex);
+            P.Pianeti.RemoveAt(i);
 
         }
 
@@ -90,7 +94,9 @@ namespace esercizio_pianeti
             {
                 g.FillEllipse(Brushes.White, r.Next(this.ClientSize.Width), r.Next(this.ClientSize.Height), 5, 5);
             }
-            
+           
+
+
 
             timer2.Enabled = true;
 
@@ -111,14 +117,14 @@ namespace esercizio_pianeti
         private void timer2_Tick(object sender, EventArgs e)
         { 
             // Refresh();
-            DisegnoPianeti();
+            
 
             for (int i = 0; i < 1000; i++)
-            {
+           {
                 P.Move();
-            }
-
-            DisegnoPianeti();
+           }
+      DisegnoPianeti();
+            
 
 
 
@@ -132,9 +138,9 @@ namespace esercizio_pianeti
             Graphics g=this.CreateGraphics();
             foreach(Pianeta p in P.Pianeti)
             {
-                p.R =20 * Math.Pow(p.Massa, 1 / 3);
+                p.R =15 * Math.Pow(p.Massa, 1 / 3);
                 Brush b = new SolidBrush(p.rr);
-                g.FillEllipse(b, (float)p.Posizione.X, (float)p.Posizione.Y, (float)p.R, (float)p.R);
+                g.FillEllipse(b, (float)p.Posizione.X, (float)p.Posizione.Y, (float)p.R*2, (float)p.R*2);
             }
         }
 
@@ -152,19 +158,19 @@ namespace esercizio_pianeti
         {
             
         }
-        XmlSerializer xmlSerializer = new XmlSerializer(typeof(Planetario));
+        //XmlSerializer xmlSerializer = new XmlSerializer(typeof(Planetario));
         private void btnSalva_Click(object sender, EventArgs e)
         {
-            TextWriter textWriter = new StreamWriter("C:\\TEMP\\MyXmlFile.txt");
+           /* TextWriter textWriter = new StreamWriter("C:\\TEMP\\MyXmlFile.txt");
             xmlSerializer.Serialize(textWriter, P);
-            textWriter.Close();
+            textWriter.Close();*/
         }
 
         private void btnRecupera_Click(object sender, EventArgs e)
         {
-            TextReader textReader = new StreamReader("C:\\TEMP\\MyXmlFile.txt");
+           /* TextReader textReader = new StreamReader("C:\\TEMP\\MyXmlFile.txt");
             Planetario planetario = (Planetario)xmlSerializer.Deserialize(textReader);
-            textReader.Close();
+            textReader.Close();*/
         }
     }
 }

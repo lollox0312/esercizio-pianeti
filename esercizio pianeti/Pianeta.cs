@@ -25,7 +25,7 @@ namespace esercizio_pianeti
         }
         public override string ToString()
         {
-            return Nome;
+            return string.Format(Nome);
         }
 
 

@@ -9,8 +9,8 @@ namespace esercizio_pianeti
 {
     public class Planetario
     {
-        internal const double G = 6.67e-11;
-        internal const double DeltaT = 0.00001;
+        public const double G = 6.67e-11;
+        public const double DeltaT = 0.00001;
         public Planetario() { }
          public List<Pianeta> Pianeti { get; set; }
         
@@ -35,8 +35,8 @@ namespace esercizio_pianeti
         {
             foreach(Pianeta p in Pianeti)
             {
-                p.Posizione = ( p.Posizione + (p.V * DeltaT) + (0.5*((Forza(p) / p.Massa) * (DeltaT*DeltaT))));
-                p.V =p.V + (Forza(p) / p.Massa) * DeltaT;
+                p.Posizione = ( p.Posizione + (p.V * DeltaT) + (0.5*(Forza(p) / p.Massa * (DeltaT*DeltaT))));
+                p.V = p.V + (Forza(p) / p.Massa) * DeltaT;
             }
             
         }
