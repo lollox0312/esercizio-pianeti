@@ -10,7 +10,7 @@ namespace esercizio_pianeti
     internal class Planetario
     {
         internal const double G = 6.67e-11;
-        internal const double DeltaT = 0.001;
+        internal const double DeltaT = 0.00001;
 
         public List<Pianeta> Pianeti { get; set; }
         

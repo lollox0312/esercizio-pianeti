@@ -107,11 +107,18 @@ namespace esercizio_pianeti
         
         
         private void timer2_Tick(object sender, EventArgs e)
-        {
-           // Refresh();
+        { 
+            // Refresh();
             DisegnoPianeti();
-            P.Move();
-            
+
+            for (int i = 0; i < 100; i++)
+            {
+                P.Move();
+            }
+
+            DisegnoPianeti();
+
+
 
         }
         
@@ -123,7 +130,7 @@ namespace esercizio_pianeti
             Graphics g=this.CreateGraphics();
             foreach(Pianeta p in P.Pianeti)
             {
-                
+                p.R =20 * Math.Pow(p.Massa, 1 / 3);
                 Brush b = new SolidBrush(p.rr);
                 g.FillEllipse(b, (float)p.Posizione.X, (float)p.Posizione.Y, (float)p.R, (float)p.R);
             }
