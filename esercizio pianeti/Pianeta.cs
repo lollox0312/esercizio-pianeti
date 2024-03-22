@@ -14,7 +14,7 @@ namespace esercizio_pianeti
         public Vettore V { get; set; }
 
         public double R { get; set; }
-        public Color rr { get; set; }
+        public Color Colore { get; set; }
         public string Nome { get; set; }
         public Pianeta(double m, Vettore ve,Vettore sp )
         {

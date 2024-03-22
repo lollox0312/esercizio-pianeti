@@ -56,7 +56,7 @@ namespace esercizio_pianeti
             Random random = new Random();
             Color randomColor = Color.FromArgb(random.Next(256), random.Next(256), random.Next(0));
             Pianeta p = new Pianeta(m, ve, posizione);
-            p.rr = randomColor;
+            p.Colore = randomColor;
             p.Nome = Nome.Text;
 
             listBox1.Items.Add(p.ToString());
@@ -138,8 +138,8 @@ namespace esercizio_pianeti
             Graphics g=this.CreateGraphics();
             foreach(Pianeta p in P.Pianeti)
             {
-                p.R =15 * Math.Pow(p.Massa, 1 / 3);
-                Brush b = new SolidBrush(p.rr);
+                p.R = 15 * Math.Pow(p.Massa, (1 / 3));
+                Brush b = new SolidBrush(p.Colore);
                 g.FillEllipse(b, (float)p.Posizione.X, (float)p.Posizione.Y, (float)p.R*2, (float)p.R*2);
             }
         }
